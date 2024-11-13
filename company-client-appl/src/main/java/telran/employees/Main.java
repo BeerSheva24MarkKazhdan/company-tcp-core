@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.Arrays;
 
 import telran.net.*;
-public class Main {private static final String HOST = "localhost";
+public class Main {
+    private static final String HOST = "localhost";
     private static final int PORT = 4000;
 
     public static void main(String[] args) {
@@ -20,14 +21,14 @@ public class Main {private static final String HOST = "localhost";
     }
 
     private static Item[] addExitItem(Item[] items, TcpClient tcpClient) {
-        Item[] res = Arrays.copyOf(items, items.length + 1);
-        res[items.length] = Item.of("Exit", io -> {
-            try {
-                tcpClient.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }, true);
-        return res;
+       Item[] res = Arrays.copyOf(items, items.length + 1);
+       res[items.length] = Item.of("Exit", io -> {
+        try {
+            tcpClient.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }, true);
+    return res;
     }
 }
