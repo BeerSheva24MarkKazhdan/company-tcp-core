@@ -12,7 +12,6 @@ import telran.net.Response;
 import telran.net.ResponseCode;
 
 public class CompanyProtocol implements Protocol {
-
     Company company;
 
     public CompanyProtocol(Company company) {
@@ -35,7 +34,7 @@ public class CompanyProtocol implements Protocol {
             Throwable causeExc = e.getCause();
             String message = causeExc == null ? e.getMessage() : causeExc.getMessage();
             response = new Response(ResponseCode.WRONG_DATA, message);
-        } catch (Exception e) {
+        } catch (Exception e){
             //only for finishing Server and printing out Exception full stack
             throw new RuntimeException(e);
         }
